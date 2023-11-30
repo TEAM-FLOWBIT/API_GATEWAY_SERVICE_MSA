@@ -1,0 +1,20 @@
+
+## 배포
+#
+#spring:
+#  cloud:
+#    config:
+#      uri: http://config-service-backend-msa-config-server-1:8888
+#      name: apigateway # yml 파일명 써주면 된다.
+#  profiles:
+#    active: prod
+
+## 로컬
+#spring:
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+##      uri: http://api.likelion-apply.org:8888
+#      name: apigateway # yml 파일명 써주면 된다.
+#  profiles:
+#    active: dev

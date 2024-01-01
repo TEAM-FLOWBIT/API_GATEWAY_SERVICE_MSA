@@ -43,6 +43,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
+            System.out.println("들");
             ServerHttpRequest request = exchange.getRequest();
 
             HttpHeaders headers = request.getHeaders();
@@ -51,8 +52,9 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             if (!headers.containsKey(HttpHeaders.AUTHORIZATION)) {
                 throw new NoAuthorizationHeaderException("authorization header not exist");
             }
-            String jwt = exchange.getRequest().getHeaders().get("Authorization").get(0).substring(7);   // 헤더의 토큰 파싱 (Bearer 제거)
 
+            String jwt = exchange.getRequest().getHeaders().get("Authorization").get(0).substring(7);   // 헤더의 토큰 파싱 (Bearer 제거)
+            System.out.println(jwt);
             if(exchange.getRequest().getHeaders().get("Authorization")==null){
                 throw new JWTVerificationException("jwt token not valid");
             }
@@ -60,6 +62,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
             if (!isJwtValid(jwt)) {
                 throw new JWTVerificationException("jwt token not valid");
             }
+            System.out.println("새로운 리퀘스트 생성 중");
 
             ServerHttpRequest requestWithHeader = request.mutate()
                     .header("username", jwtProvider.getUserIdFromToken(jwt))

@@ -4,4 +4,3 @@ ENV TZ=Asia/Seoul
 EXPOSE 8000
 
 ENTRYPOINT ["java", "-jar", "-Dspring.config.name=bootstrap", "/application.jar"]
-

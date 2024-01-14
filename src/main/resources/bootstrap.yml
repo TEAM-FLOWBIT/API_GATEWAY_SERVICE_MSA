@@ -1,10 +1,8 @@
-
 ## 배포
-
 #spring:
 #  cloud:
 #    config:
-#      uri: https://config.apps.sys.paas-ta-dev10.kr
+#      uri: http://flowbit-config:8888
 #      name: apigateway # yml 파일명 써주면 된다.
 #  profiles:
 #    active: prod

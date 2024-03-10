@@ -1,17 +1,10 @@
-## 배포
-#spring:
-#  cloud:
-#    config:
-#      uri: http://flowbit-config:8888
-#      name: apigateway # yml 파일명 써주면 된다.
-#  profiles:
-#    active: prod
-# 로컬
 spring:
   cloud:
     config:
-      uri: http://localhost:8888
-      name: apigateway # yml 파일명 써주면 된다.
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      name: apigateway-service # yml 파일명 써주면 된다.
   profiles:
-    active: dev
+    active: ${SPRING_PROFILE:dev}
+
+
 

@@ -64,7 +64,7 @@ pipeline {
                 dir('.'){
                     sh '''
                         pwd
-                        cd /var/jenkins_home/workspace/flowbit-apigateway
+                        cd /var/jenkins_home/workspace/flowbit-apigatewayservice
                         ./mvnw clean package -DskipTests
                     '''
                 }
@@ -82,7 +82,7 @@ pipeline {
             steps {
                 echo 'Build Docker'
                 sh """
-                    cd /var/jenkins_home/workspace/flowbit-apigateway
+                    cd /var/jenkins_home/workspace/flowbit-apigatewayservice
                     docker build -t $IMAGE_NAME:latest .
                 """
             }
